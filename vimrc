@@ -121,21 +121,26 @@ nnoremap <silent> <C-x> :q<CR>
 vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
 
 " Open taglist with F8
-nnoremap <silent> <F8> :TlistToggle<CR>
+ nnoremap <silent> <F9> :TlistToggle<CR>
+ nnoremap <silent> <F8> :NERDTreeToggle<CR>
+
 
 " Use <c-tab> <shift-c-tab> to switch between tabs
-nnoremap <silent> <C-TAB> :tabn<CR>
-nnoremap <silent> <C-S-TAB> :tabp<CR>
+nmap <C-S-tab> :tabprevious<CR>
+nmap <C-tab> :tabnext<CR>
+map <C-S-tab> :tabprevious<CR>
+map <C-tab> :tabnext<CR>
+imap <C-S-tab> <Esc>:tabprevious<CR>i
+imap <C-tab> <Esc>:tabnext<CR>i
+nmap <C-t> :tabnew<CR>
+imap <C-t> <Esc>:tabnew<CR>
+
 
 " removes whitespaces at the end of lines
 nnoremap <silent> <C-F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Issue make
 map <silent> <F6> :w<CR>:make -j2<CR>
-
-" Close and move to prev / next file using F10 / F11
-map <F10> :cp<CR>
-map <F11> :cn<CR>
 
 " Easy formatting of text
 map Q gq
@@ -170,8 +175,8 @@ set tags=tags;/
 " special tags place(s)
 " set tags +=~/.vim/tags/cpp
 " set tags +=~/.vim/tags/linux
-set tags +=/usr/src/linux/tags
-set tags +=/home/klmann/ml410/linux-2.6-xlnx/tags
+"set tags +=/usr/src/linux/tags
+"set tags +=/home/klmann/ml410/linux-2.6-xlnx/tags
 
 
 " Use german quotes in TeX sources
@@ -315,3 +320,7 @@ let vala_no_tab_space_error = 1
 
 " Minimum lines used for comment syncing (default 50)
 "let vala_minlines = 120
+
+
+au BufNewFile,BufRead *.as set filetype=actionscript
+syntax on
