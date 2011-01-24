@@ -323,4 +323,14 @@ let vala_no_tab_space_error = 1
 
 
 au BufNewFile,BufRead *.as set filetype=actionscript
-syntax on
+
+map <F5> :call ToggleList()<CR>
+function! ToggleList()
+	if exists('s:varlist')
+		set list
+		unlet! s:varlist
+	else
+		let s:varlist='false'
+		set nolist
+	endif
+endfunction
